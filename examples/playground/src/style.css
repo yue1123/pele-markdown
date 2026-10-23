@@ -1,0 +1,317 @@
+:root {
+  --bg: #fafaf9;
+  --panel: #ffffff;
+  --fg: #1c1917;
+  --muted: #78716c;
+  --border: #e7e5e4;
+  --soft: #f5f5f4;
+  --accent: #205ea6;
+  --danger: #af3029;
+  --danger-soft: #fdecea;
+  --mono: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+  --sans: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #141312;
+    --panel: #1c1b1a;
+    --fg: #e7e5e4;
+    --muted: #a8a29e;
+    --border: #2f2d2b;
+    --soft: #262422;
+    --accent: #6ea8ef;
+    --danger: #f87171;
+    --danger-soft: #3b1d1b;
+  }
+}
+
+/* Map pele colors to the page theme so diagrams follow dark mode without re-rendering */
+.pele {
+  /* Also used as the text color on filled shapes such as treemap leaves, so it can't be transparent */
+  --pele-bg: var(--bg);
+  --pele-fg: var(--fg);
+  --pele-muted: var(--muted);
+  --pele-line: var(--muted);
+  --pele-surface: var(--soft);
+  --pele-surface-alt: var(--panel);
+  --pele-border: var(--border);
+  --pele-accent: var(--accent);
+  --pele-font: var(--sans);
+  --pele-font-mono: var(--mono);
+  max-width: 100%;
+  height: auto;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  background: var(--bg);
+  color: var(--fg);
+  font: 15px/1.6 var(--sans);
+}
+
+button,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+.topbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 24px;
+  padding: 12px 20px;
+  border-bottom: 1px solid var(--border);
+  background: var(--panel);
+}
+
+.brand {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 650;
+  letter-spacing: -0.01em;
+}
+
+.brand span {
+  color: var(--muted);
+  font-weight: 400;
+}
+
+.tabs {
+  display: inline-flex;
+  gap: 2px;
+  padding: 3px;
+  border-radius: 8px;
+  background: var(--soft);
+}
+
+.tabs button {
+  padding: 4px 14px;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.tabs button:hover {
+  color: var(--fg);
+}
+
+.tabs button[aria-selected='true'] {
+  background: var(--panel);
+  color: var(--fg);
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.12);
+}
+
+.tabs.small button {
+  padding: 2px 10px;
+  font-family: var(--sans);
+  font-size: 12px;
+}
+
+.sample {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.sample select {
+  padding: 4px 8px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--panel);
+}
+
+.panes {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  flex: 1;
+  min-height: 0;
+}
+
+.pane {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 0;
+}
+
+.pane + .pane {
+  border-left: 1px solid var(--border);
+}
+
+.pane-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 40px;
+  padding: 6px 20px;
+  border-bottom: 1px solid var(--border);
+}
+
+.pane-title {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.link {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--accent);
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.status {
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 12px;
+}
+
+.status.error {
+  color: var(--danger);
+}
+
+.setup,
+.html,
+textarea {
+  margin: 0;
+  font: 13px/1.6 var(--mono);
+  tab-size: 2;
+}
+
+.setup {
+  padding: 12px 20px;
+  border-bottom: 1px solid var(--border);
+  background: var(--soft);
+  overflow-x: auto;
+}
+
+textarea {
+  flex: 1;
+  width: 100%;
+  padding: 16px 20px;
+  border: 0;
+  outline: none;
+  background: var(--panel);
+  resize: none;
+}
+
+.preview,
+.html {
+  flex: 1;
+  overflow: auto;
+  padding: 16px 24px 48px;
+}
+
+.html {
+  white-space: pre-wrap;
+  word-break: break-all;
+  background: var(--panel);
+}
+
+[hidden] {
+  display: none !important;
+}
+
+/* Rendered Markdown */
+.preview > :first-child {
+  margin-top: 0;
+}
+
+.preview h1,
+.preview h2,
+.preview h3 {
+  line-height: 1.25;
+  margin: 1.6em 0 0.6em;
+}
+
+.preview a {
+  color: var(--accent);
+}
+
+.preview :not(pre) > code {
+  padding: 0.1em 0.35em;
+  border-radius: 4px;
+  background: var(--soft);
+  font: 0.9em var(--mono);
+}
+
+.preview pre {
+  padding: 12px 16px;
+  border-radius: 8px;
+  background: var(--soft);
+  font: 13px/1.6 var(--mono);
+  overflow-x: auto;
+}
+
+.preview blockquote {
+  margin: 1em 0;
+  padding-left: 16px;
+  border-left: 3px solid var(--border);
+}
+
+.preview .pele {
+  display: block;
+  margin: 16px 0;
+}
+
+.preview .pele-error {
+  background: var(--danger-soft);
+  color: var(--danger);
+  white-space: pre-wrap;
+}
+
+@media (max-width: 760px) {
+  .panes {
+    grid-template-columns: 1fr;
+    grid-template-rows: minmax(240px, 40vh) 1fr;
+  }
+
+  .pane + .pane {
+    border-left: 0;
+    border-top: 1px solid var(--border);
+  }
+
+  .sample {
+    margin-left: 0;
+  }
+
+  .topbar,
+  .pane-head,
+  textarea,
+  .setup {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .preview,
+  .html {
+    padding: 16px;
+  }
+}

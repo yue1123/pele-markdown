@@ -13,7 +13,8 @@
     "typecheck": "pnpm -r run typecheck && tsc -p .",
     "changeset": "changeset",
     "release": "pnpm test && pnpm test:dist && changeset publish",
-    "example:vitepress": "pnpm build && pnpm --filter example-vitepress docs:dev"
+    "example:vitepress": "pnpm build && pnpm --filter example-vitepress docs:dev",
+    "example:playground": "pnpm build && pnpm --filter example-playground dev"
   },
   "devDependencies": {
     "@changesets/cli": "^2.29.0",
