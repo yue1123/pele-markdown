@@ -1,5 +1,5 @@
 {
-  "name": "pele-core",
+  "name": "pele-markdown-core",
   "version": "0.0.0",
   "description": "Parse and render pele fenced code blocks, independent of any markdown parser",
   "type": "module",
@@ -25,5 +25,8 @@
   "scripts": {
     "build": "tsdown",
     "typecheck": "tsc -p ."
+  },
+  "dependencies": {
+    "pele": "^1.9.0"
   }
 }

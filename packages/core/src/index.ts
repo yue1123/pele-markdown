@@ -1,20 +1,29 @@
+import { render as renderDiagram, type RenderOptions } from 'pele'
+
+export { PeleError } from 'pele'
+export type { RenderOptions } from 'pele'
+
 export interface PeleBlock {
-  /** 代码块内容，已去掉末尾换行 */
+  /** Block content (Mermaid syntax) without the trailing newline */
   source: string
-  /** info string 中语言名之后的部分，例如 ```pele title="x" 里的 `title="x"` */
+  /** The info string after the language name, e.g. `title="x"` in ```pele title="x" */
   meta: string
 }
 
 export interface PeleOptions {
-  /** 要接管的围栏语言名，默认 `pele` */
-  lang?: string
-  /** 自定义渲染，返回 HTML 字符串；不传则使用内置渲染 */
+  /** Fence language(s) to handle, `pele` by default; accepts an array such as `['pele', 'mermaid']` */
+  lang?: string | string[]
+  /** Options passed through to pele's `render()` */
+  pele?: RenderOptions
+  /** Replaces the built-in rendering entirely; returns an HTML string */
   render?: (block: PeleBlock) => string
+  /** HTML to output when rendering fails; defaults to `<pre class="pele-error">`. Rethrow here to abort rendering */
+  onError?: (error: unknown, block: PeleBlock) => string
 }
 
 export const DEFAULT_LANG = 'pele'
 
-/** 把 info string 拆成语言名和 meta */
+/** Splits an info string into the language name and meta */
 export function parseInfo(info: string | null | undefined): { lang: string; meta: string } {
   const trimmed = (info ?? '').trim()
   const match = /^(\S*)\s*([\s\S]*)$/.exec(trimmed)!
@@ -22,22 +31,29 @@ export function parseInfo(info: string | null | undefined): { lang: string; meta
 }
 
 export function isPeleLang(lang: string | null | undefined, options: PeleOptions = {}): boolean {
-  return lang === (options.lang ?? DEFAULT_LANG)
+  if (!lang) return false
+  const langs = options.lang ?? DEFAULT_LANG
+  return Array.isArray(langs) ? langs.includes(lang) : lang === langs
 }
 
 export function createBlock(source: string, meta = ''): PeleBlock {
-  // markdown-it 的 fence 内容带末尾换行，marked / mdast 不带，这里统一
-  return { source: source.replace(/\r?\n$/, ''), meta }
+  // markdown-it and marked normalize \r\n to \n but mdast doesn't, and only
+  // markdown-it keeps the trailing newline; make all of them consistent
+  return { source: source.replace(/\r\n?/g, '\n').replace(/\n$/, ''), meta }
 }
 
 export function renderPele(block: PeleBlock, options: PeleOptions = {}): string {
   if (options.render) return options.render(block)
-  return defaultRender(block)
+  try {
+    return `${renderDiagram(block.source, options.pele).svg}\n`
+  } catch (error) {
+    return (options.onError ?? defaultOnError)(error, block)
+  }
 }
 
-// TODO: 替换为真正的 pele 解析与渲染
-function defaultRender(block: PeleBlock): string {
-  return `<div class="pele">${escapeHtml(block.source)}</div>\n`
+function defaultOnError(error: unknown): string {
+  const message = error instanceof Error ? error.message : String(error)
+  return `<pre class="pele-error"><code>${escapeHtml(message)}</code></pre>\n`
 }
 
 export function escapeHtml(value: string): string {
