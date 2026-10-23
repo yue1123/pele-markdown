@@ -4,6 +4,8 @@
 
 在 Markdown 里写 ```` ```pele ```` 围栏代码块，内容用 [Mermaid](https://mermaid.js.org) 语法，通过 [pele](https://pele.run) 在构建时同步渲染成 SVG。浏览器端不需要任何 JS。支持 markdown-it、marked 和 remark。
 
+**[在演示站里试一试](https://yue1123.github.io/pele-markdown/)**
+
 ````md
 ```pele
 flowchart LR
@@ -68,7 +70,7 @@ export default defineConfig({
 
 ## 演示站
 
-[`examples/playground`](examples/playground) 是一个在线编辑器：左边写 Markdown，右边实时显示渲染结果，可在 markdown-it、marked、remark 之间切换，对比各自的输出。运行 `pnpm example:playground` 启动。
+[演示站](https://yue1123.github.io/pele-markdown/)（源码在 [`examples/playground`](examples/playground)）是一个在线编辑器：左边写 Markdown，右边实时显示渲染结果，可在 markdown-it、marked、remark 之间切换，对比各自的输出。本地运行 `pnpm example:playground` 启动。每次推送到 `main` 都会自动部署到 GitHub Pages。
 
 ## 选项
 

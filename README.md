@@ -4,6 +4,8 @@ English | [简体中文](README.zh-CN.md)
 
 Write ```` ```pele ```` fenced code blocks in Markdown using [Mermaid](https://mermaid.js.org) syntax, and [pele](https://pele.run) renders them to SVG synchronously at build time. No JS is needed in the browser. Works with markdown-it, marked and remark.
 
+**[Try it in the playground](https://yue1123.github.io/pele-markdown/)**
+
 ````md
 ```pele
 flowchart LR
@@ -68,7 +70,7 @@ See [`examples/vitepress`](examples/vitepress) for a complete example, including
 
 ## Playground
 
-[`examples/playground`](examples/playground) is a live editor: Markdown on the left, rendered output on the right, with tabs to switch between markdown-it, marked and remark and compare their output. Run `pnpm example:playground` to start it.
+The [playground](https://yue1123.github.io/pele-markdown/) ([`examples/playground`](examples/playground)) is a live editor: Markdown on the left, rendered output on the right, with tabs to switch between markdown-it, marked and remark and compare their output. Run `pnpm example:playground` to start it locally. It is deployed to GitHub Pages on every push to `main`.
 
 ## Options
 
