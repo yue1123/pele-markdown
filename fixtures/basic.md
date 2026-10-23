@@ -1,5 +1,6 @@
 # Title
 
 ```pele
-hello pele
+flowchart LR
+  A[Markdown] --> B[SVG]
 ```
