@@ -4,7 +4,7 @@
   "type": "module",
   "packageManager": "pnpm@10.18.1",
   "scripts": {
-    "build": "pnpm -r run build",
+    "build": "pnpm -r --filter './packages/*' run build",
     "test": "vitest run",
     "test:update": "vitest run packages/markdown-it-pele -u && vitest run",
     "test:watch": "vitest",
