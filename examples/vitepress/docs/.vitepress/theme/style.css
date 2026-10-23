@@ -1,6 +1,6 @@
 /* Map pele colors to VitePress theme variables so diagrams follow dark mode */
 .pele {
-  --pele-bg: transparent;
+  --pele-bg: var(--vp-c-bg);
   --pele-fg: var(--vp-c-text-1);
   --pele-muted: var(--vp-c-text-2);
   --pele-line: var(--vp-c-text-2);

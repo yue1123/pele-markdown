@@ -6,7 +6,7 @@ pele takes all of its colors from CSS variables. This example maps them to ViteP
 
 ```css
 .pele {
-  --pele-bg: transparent;
+  --pele-bg: var(--vp-c-bg);
   --pele-fg: var(--vp-c-text-1);
   --pele-line: var(--vp-c-text-2);
   --pele-surface: var(--vp-c-bg-soft);
