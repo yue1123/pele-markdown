@@ -31,12 +31,14 @@
     "typecheck": "tsc -p ."
   },
   "dependencies": {
-    "pele-core": "workspace:^"
+    "pele-markdown-core": "workspace:^"
   },
   "peerDependencies": {
-    "markdown-it": ">=15"
+    "markdown-it": ">=14"
   },
   "devDependencies": {
-    "markdown-it": "^15.0.3"
+    "@types/markdown-it": "^14.2.0",
+    "markdown-it": "^15.0.3",
+    "markdown-it-14": "npm:markdown-it@^14.3.3"
   }
 }
