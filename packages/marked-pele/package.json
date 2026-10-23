@@ -31,7 +31,7 @@
     "typecheck": "tsc -p ."
   },
   "dependencies": {
-    "pele-core": "workspace:^"
+    "pele-markdown-core": "workspace:^"
   },
   "peerDependencies": {
     "marked": ">=13"

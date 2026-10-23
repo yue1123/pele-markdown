@@ -32,7 +32,7 @@
   },
   "dependencies": {
     "@types/mdast": "^4.0.4",
-    "pele-core": "workspace:^",
+    "pele-markdown-core": "workspace:^",
     "unist-util-visit": "^5.0.0"
   },
   "peerDependencies": {
@@ -42,6 +42,7 @@
     "rehype-stringify": "^10.0.1",
     "remark-parse": "^11.0.0",
     "remark-rehype": "^11.1.2",
+    "remark-stringify": "^11.0.0",
     "unified": "^11.0.5"
   }
 }

@@ -1,13 +1,14 @@
 import type { Html, Root } from 'mdast'
 import { visit } from 'unist-util-visit'
-import { createBlock, isPeleLang, renderPele, type PeleOptions } from 'pele-core'
+import { createBlock, isPeleLang, renderPele, type PeleOptions } from 'pele-markdown-core'
 
-export type { PeleBlock, PeleOptions } from 'pele-core'
+export { renderPele } from 'pele-markdown-core'
+export type { PeleBlock, PeleOptions } from 'pele-markdown-core'
 
 /**
- * 把 ```pele 代码块替换成 html 节点。
- * 转 HTML 时需要 remark-rehype 开启 `allowDangerousHtml`，
- * 并配合 rehype-raw 或 rehype-stringify 的 `allowDangerousHtml`。
+ * Replaces ```pele code blocks with html nodes.
+ * Converting to HTML requires `allowDangerousHtml` on remark-rehype,
+ * together with rehype-raw or `allowDangerousHtml` on rehype-stringify.
  */
 export default function remarkPele(options: PeleOptions = {}) {
   return (tree: Root) => {
