@@ -1,15 +1,24 @@
 # pele-markdown
 
-把 ```` ```pele ```` 围栏代码块渲染成 HTML，同时支持 markdown-it、marked 和 remark。
+English | [简体中文](README.zh-CN.md)
 
-| 包 | 说明 |
+Write ```` ```pele ```` fenced code blocks in Markdown using [Mermaid](https://mermaid.js.org) syntax, and [pele](https://pele.run) renders them to SVG synchronously at build time. No JS is needed in the browser. Works with markdown-it, marked and remark.
+
+````md
+```pele
+flowchart LR
+  A[Markdown] --> B[SVG]
+```
+````
+
+| Package | Description |
 |---|---|
-| `pele-core` | 解析与渲染逻辑，不依赖任何 markdown 库 |
-| `markdown-it-pele` | markdown-it 插件 |
-| `marked-pele` | marked 扩展 |
-| `remark-pele` | remark 插件 |
+| `pele-markdown-core` | Shared rendering logic used by the plugins below, independent of any Markdown library. You normally don't install it directly |
+| `markdown-it-pele` | markdown-it plugin (markdown-it >= 14, works with VitePress) |
+| `marked-pele` | marked extension (marked >= 13) |
+| `remark-pele` | remark plugin (unified >= 11) |
 
-## 用法
+## Usage
 
 ```js
 // markdown-it
@@ -18,7 +27,7 @@ new MarkdownIt().use(markdownItPele, options)
 // marked
 new Marked(markedPele(options))
 
-// remark（pele 会生成原始 HTML，需开启 allowDangerousHtml）
+// remark (the output is raw SVG, so allowDangerousHtml is required)
 unified()
   .use(remarkParse)
   .use(remarkPele, options)
@@ -26,19 +35,78 @@ unified()
   .use(rehypeStringify, { allowDangerousHtml: true })
 ```
 
-`options`：
+In CommonJS, the default export is on `.default`:
 
-- `lang`：要接管的语言名，默认 `'pele'`
-- `render(block)`：自定义渲染，`block` 为 `{ source, meta }`
+```js
+const markdownItPele = require('markdown-it-pele').default
+```
 
-## 开发
+> **Note for remark**: `remark-pele` replaces code blocks with `html` nodes. If you use `remark-stringify` to output Markdown instead of HTML, the ```` ```pele ```` blocks become raw SVG. Use it only in pipelines that produce HTML.
+
+## Using with VitePress
+
+VitePress compiles Markdown into Vue templates, so wrap the output in `v-pre`. Otherwise `{{ }}` in diagram text is treated as interpolation and silently renders as blank:
+
+```ts
+// .vitepress/config.ts
+import markdownItPele, { renderPele } from 'markdown-it-pele'
+import { defineConfig } from 'vitepress'
+
+export default defineConfig({
+  markdown: {
+    config(md) {
+      md.use(markdownItPele, {
+        lang: ['pele', 'mermaid'],
+        render: block => `<div class="pele-diagram" v-pre>${renderPele(block)}</div>`,
+      })
+    },
+  },
+})
+```
+
+See [`examples/vitepress`](examples/vitepress) for a complete example, including dark mode theme mapping. Run `pnpm example:vitepress` to start it.
+
+## Options
+
+| Option | Description |
+|---|---|
+| `lang` | Fence language to handle, `'pele'` by default. Pass `['pele', 'mermaid']` to also handle ```` ```mermaid ```` |
+| `pele` | Options passed through to pele's `render()`, such as `responsive`, `fontSize` and `icons`. See the [pele API](https://pele.run/api) |
+| `onError(error, block)` | HTML to output when rendering fails. Defaults to a `<pre class="pele-error">` with the error message; `throw error` here to fail the build |
+| `render(block)` | Replaces the built-in rendering entirely. `block` is `{ source, meta }`. To wrap the output, call `renderPele(block)`, which every package exports |
+
+## Styling
+
+The generated `<svg>` has `class="pele pele-<diagram type>"`. Colors and fonts are controlled with CSS variables:
+
+```css
+.pele {
+  --pele-bg: #fffcf0;
+  --pele-fg: #100f0f;
+  --pele-accent: #205ea6;
+}
+```
+
+See [pele theming](https://pele.run/theming) for all variables.
+
+## Development
 
 ```sh
 pnpm install
-pnpm test        # 三个适配器共用 fixtures/ 下的用例
+pnpm test               # all three adapters share the cases in fixtures/
+pnpm test:update        # regenerate fixtures/*.html after changing the rendering
+pnpm test:dist          # build, then check each package loads by name via ESM / CJS
+pnpm coverage           # coverage, with a 100% threshold
 pnpm typecheck
 pnpm build
-pnpm changeset   # 记录版本变更
+pnpm example:vitepress  # start the VitePress example
+pnpm changeset          # record a version change
 ```
 
-新增用例：在 `fixtures/` 下放一对 `xxx.md` 和 `xxx.html`。比较时会忽略标签之间的空白。
+Tests come in three layers:
+
+- `fixtures/`: full Markdown → HTML snapshots; all three adapters must produce identical output
+- `test-utils/contract.ts`: behavior every adapter must share (meta, line endings, nesting, `lang`, `onError` and more)
+- each package's `test/`: library-specific behavior, such as markdown-it's `highlight`, marked's async mode and remark's node positions
+
+To add a case, put an `xxx.md` in `fixtures/`, run `pnpm test:update` to generate `xxx.html`, review it, and commit both. Only markdown-it writes snapshots; marked and remark must match its output exactly.
