@@ -1,7 +1,7 @@
-import { createBlock, isPeleLang, parseInfo, renderPele, type PeleOptions } from 'pele-markdown-core'
+import { createBlock, isPeleLang, parseInfo, renderPele, type PeleOptions } from '@pele-markdown/core'
 
-export { renderPele } from 'pele-markdown-core'
-export type { PeleBlock, PeleOptions } from 'pele-markdown-core'
+export { renderPele } from '@pele-markdown/core'
+export type { PeleBlock, PeleOptions } from '@pele-markdown/core'
 
 type FenceRule = (tokens: any[], idx: number, options: any, env: any, self: any) => string
 

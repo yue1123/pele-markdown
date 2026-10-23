@@ -85,7 +85,7 @@ importers:
 
   packages/markdown-it-pele:
     dependencies:
-      pele-markdown-core:
+      '@pele-markdown/core':
         specifier: workspace:^
         version: link:../core
     devDependencies:
@@ -101,7 +101,7 @@ importers:
 
   packages/marked-pele:
     dependencies:
-      pele-markdown-core:
+      '@pele-markdown/core':
         specifier: workspace:^
         version: link:../core
     devDependencies:
@@ -111,12 +111,12 @@ importers:
 
   packages/remark-pele:
     dependencies:
+      '@pele-markdown/core':
+        specifier: workspace:^
+        version: link:../core
       '@types/mdast':
         specifier: ^4.0.4
         version: 4.0.4
-      pele-markdown-core:
-        specifier: workspace:^
-        version: link:../core
       unist-util-visit:
         specifier: ^5.0.0
         version: 5.1.0

@@ -15,7 +15,7 @@ flowchart LR
 
 | 包 | 说明 |
 |---|---|
-| `pele-markdown-core` | 下面几个插件共用的渲染逻辑，不依赖任何 markdown 库，一般不需要直接安装 |
+| `@pele-markdown/core` | 下面几个插件共用的渲染逻辑，不依赖任何 markdown 库，一般不需要直接安装 |
 | `markdown-it-pele` | markdown-it 插件（markdown-it >= 14，兼容 VitePress） |
 | `marked-pele` | marked 扩展（marked >= 13） |
 | `remark-pele` | remark 插件（unified >= 11） |

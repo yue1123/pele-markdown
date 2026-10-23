@@ -1,8 +1,8 @@
 import type { MarkedExtension } from 'marked'
-import { createBlock, isPeleLang, parseInfo, renderPele, type PeleOptions } from 'pele-markdown-core'
+import { createBlock, isPeleLang, parseInfo, renderPele, type PeleOptions } from '@pele-markdown/core'
 
-export { renderPele } from 'pele-markdown-core'
-export type { PeleBlock, PeleOptions } from 'pele-markdown-core'
+export { renderPele } from '@pele-markdown/core'
+export type { PeleBlock, PeleOptions } from '@pele-markdown/core'
 
 export default function markedPele(options: PeleOptions = {}): MarkedExtension {
   return {

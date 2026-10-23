@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
-import { createBlock, isPeleLang, parseInfo, PeleError, renderPele } from 'pele-markdown-core'
+import { createBlock, isPeleLang, parseInfo, PeleError, renderPele } from '@pele-markdown/core'
 
-describe('pele-markdown-core', () => {
+describe('@pele-markdown/core', () => {
   it('parses info string', () => {
     expect(parseInfo('pele title="a b"')).toEqual({ lang: 'pele', meta: 'title="a b"' })
     expect(parseInfo('  pele  ')).toEqual({ lang: 'pele', meta: '' })

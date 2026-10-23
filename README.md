@@ -15,7 +15,7 @@ flowchart LR
 
 | Package | Description |
 |---|---|
-| `pele-markdown-core` | Shared rendering logic used by the plugins below, independent of any Markdown library. You normally don't install it directly |
+| `@pele-markdown/core` | Shared rendering logic used by the plugins below, independent of any Markdown library. You normally don't install it directly |
 | `markdown-it-pele` | markdown-it plugin (markdown-it >= 14, works with VitePress) |
 | `marked-pele` | marked extension (marked >= 13) |
 | `remark-pele` | remark plugin (unified >= 11) |

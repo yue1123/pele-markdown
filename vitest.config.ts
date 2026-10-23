@@ -5,7 +5,7 @@ export default defineConfig({
   resolve: {
     // Use the core source directly so tests don't need a build first
     alias: {
-      'pele-markdown-core': fileURLToPath(new URL('./packages/core/src/index.ts', import.meta.url)),
+      '@pele-markdown/core': fileURLToPath(new URL('./packages/core/src/index.ts', import.meta.url)),
     },
   },
   test: {

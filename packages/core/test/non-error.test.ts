@@ -1,5 +1,5 @@
 import { expect, it, vi } from 'vitest'
-import { createBlock, renderPele } from 'pele-markdown-core'
+import { createBlock, renderPele } from '@pele-markdown/core'
 
 vi.mock('pele', async importOriginal => ({
   ...(await importOriginal<typeof import('pele')>()),

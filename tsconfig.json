@@ -11,7 +11,7 @@
       "node"
     ],
     "paths": {
-      "pele-markdown-core": [
+      "@pele-markdown/core": [
         "./packages/core/src/index.ts"
       ],
       "markdown-it-14": [

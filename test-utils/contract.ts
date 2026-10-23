@@ -1,4 +1,4 @@
-import { PeleError, type PeleBlock, type PeleOptions } from 'pele-markdown-core'
+import { PeleError, type PeleBlock, type PeleOptions } from '@pele-markdown/core'
 import { describe, expect, it } from 'vitest'
 
 const FLOWCHART = 'flowchart LR\n  A --> B'

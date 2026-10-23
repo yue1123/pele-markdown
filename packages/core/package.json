@@ -1,5 +1,5 @@
 {
-  "name": "pele-markdown-core",
+  "name": "@pele-markdown/core",
   "version": "0.0.0",
   "description": "Render Mermaid diagram code blocks to SVG at build time, shared by markdown-it-pele, marked-pele and remark-pele",
   "keywords": [

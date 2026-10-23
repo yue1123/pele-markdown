@@ -1,9 +1,9 @@
 import type { Html, Root } from 'mdast'
 import { visit } from 'unist-util-visit'
-import { createBlock, isPeleLang, renderPele, type PeleOptions } from 'pele-markdown-core'
+import { createBlock, isPeleLang, renderPele, type PeleOptions } from '@pele-markdown/core'
 
-export { renderPele } from 'pele-markdown-core'
-export type { PeleBlock, PeleOptions } from 'pele-markdown-core'
+export { renderPele } from '@pele-markdown/core'
+export type { PeleBlock, PeleOptions } from '@pele-markdown/core'
 
 /**
  * Replaces ```pele code blocks with html nodes.

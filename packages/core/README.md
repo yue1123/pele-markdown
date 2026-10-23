@@ -1,4 +1,4 @@
-# pele-markdown-core
+# @pele-markdown/core
 
 Shared logic behind [`markdown-it-pele`](https://www.npmjs.com/package/markdown-it-pele), [`marked-pele`](https://www.npmjs.com/package/marked-pele) and [`remark-pele`](https://www.npmjs.com/package/remark-pele): it parses fence info strings and renders [Mermaid](https://mermaid.js.org) code blocks to SVG with [pele](https://pele.run).
 
