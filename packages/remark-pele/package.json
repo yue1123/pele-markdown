@@ -1,0 +1,47 @@
+{
+  "name": "remark-pele",
+  "version": "0.0.0",
+  "description": "remark plugin for pele fenced code blocks",
+  "type": "module",
+  "license": "MIT",
+  "keywords": [
+    "pele",
+    "unified"
+  ],
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.mts",
+        "default": "./dist/index.mjs"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    }
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.cts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsdown",
+    "typecheck": "tsc -p ."
+  },
+  "dependencies": {
+    "@types/mdast": "^4.0.4",
+    "pele-core": "workspace:^",
+    "unist-util-visit": "^5.0.0"
+  },
+  "peerDependencies": {
+    "unified": ">=11"
+  },
+  "devDependencies": {
+    "rehype-stringify": "^10.0.1",
+    "remark-parse": "^11.0.0",
+    "remark-rehype": "^11.1.2",
+    "unified": "^11.0.5"
+  }
+}

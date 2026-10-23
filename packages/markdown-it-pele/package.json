@@ -1,0 +1,42 @@
+{
+  "name": "markdown-it-pele",
+  "version": "0.0.0",
+  "description": "markdown-it plugin for pele fenced code blocks",
+  "type": "module",
+  "license": "MIT",
+  "keywords": [
+    "pele",
+    "markdown-it"
+  ],
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.mts",
+        "default": "./dist/index.mjs"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    }
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.cts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsdown",
+    "typecheck": "tsc -p ."
+  },
+  "dependencies": {
+    "pele-core": "workspace:^"
+  },
+  "peerDependencies": {
+    "markdown-it": ">=15"
+  },
+  "devDependencies": {
+    "markdown-it": "^15.0.3"
+  }
+}
