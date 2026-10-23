@@ -1,13 +1,31 @@
 {
   "name": "remark-pele",
   "version": "0.0.0",
-  "description": "remark plugin for pele fenced code blocks",
+  "description": "remark plugin that renders Mermaid diagrams to SVG at build time, no client-side JS",
+  "keywords": [
+    "mermaid",
+    "diagram",
+    "svg",
+    "flowchart",
+    "sequence-diagram",
+    "ssr",
+    "static-site",
+    "pele",
+    "remark",
+    "remark-plugin",
+    "unified",
+    "mdast"
+  ],
+  "homepage": "https://github.com/yue1123/pele-markdown/tree/main/packages/remark-pele#readme",
+  "bugs": "https://github.com/yue1123/pele-markdown/issues",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yue1123/pele-markdown.git",
+    "directory": "packages/remark-pele"
+  },
+  "author": "yue1123",
   "type": "module",
   "license": "MIT",
-  "keywords": [
-    "pele",
-    "unified"
-  ],
   "exports": {
     ".": {
       "import": {

@@ -1,13 +1,29 @@
 {
   "name": "marked-pele",
   "version": "0.0.0",
-  "description": "marked extension for pele fenced code blocks",
+  "description": "marked extension that renders Mermaid diagrams to SVG at build time, no client-side JS",
+  "keywords": [
+    "mermaid",
+    "diagram",
+    "svg",
+    "flowchart",
+    "sequence-diagram",
+    "ssr",
+    "static-site",
+    "pele",
+    "marked",
+    "marked-extension"
+  ],
+  "homepage": "https://github.com/yue1123/pele-markdown/tree/main/packages/marked-pele#readme",
+  "bugs": "https://github.com/yue1123/pele-markdown/issues",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yue1123/pele-markdown.git",
+    "directory": "packages/marked-pele"
+  },
+  "author": "yue1123",
   "type": "module",
   "license": "MIT",
-  "keywords": [
-    "pele",
-    "marked"
-  ],
   "exports": {
     ".": {
       "import": {

@@ -1,13 +1,30 @@
 {
   "name": "markdown-it-pele",
   "version": "0.0.0",
-  "description": "markdown-it plugin for pele fenced code blocks",
+  "description": "markdown-it plugin that renders Mermaid diagrams to SVG at build time, no client-side JS",
+  "keywords": [
+    "mermaid",
+    "diagram",
+    "svg",
+    "flowchart",
+    "sequence-diagram",
+    "ssr",
+    "static-site",
+    "pele",
+    "markdown-it",
+    "markdown-it-plugin",
+    "vitepress"
+  ],
+  "homepage": "https://github.com/yue1123/pele-markdown/tree/main/packages/markdown-it-pele#readme",
+  "bugs": "https://github.com/yue1123/pele-markdown/issues",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yue1123/pele-markdown.git",
+    "directory": "packages/markdown-it-pele"
+  },
+  "author": "yue1123",
   "type": "module",
   "license": "MIT",
-  "keywords": [
-    "pele",
-    "markdown-it"
-  ],
   "exports": {
     ".": {
       "import": {

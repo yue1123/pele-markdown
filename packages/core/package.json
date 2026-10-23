@@ -1,7 +1,26 @@
 {
   "name": "pele-markdown-core",
   "version": "0.0.0",
-  "description": "Parse and render pele fenced code blocks, independent of any markdown parser",
+  "description": "Render Mermaid diagram code blocks to SVG at build time, shared by markdown-it-pele, marked-pele and remark-pele",
+  "keywords": [
+    "mermaid",
+    "diagram",
+    "svg",
+    "flowchart",
+    "sequence-diagram",
+    "ssr",
+    "static-site",
+    "pele",
+    "markdown"
+  ],
+  "homepage": "https://github.com/yue1123/pele-markdown/tree/main/packages/core#readme",
+  "bugs": "https://github.com/yue1123/pele-markdown/issues",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yue1123/pele-markdown.git",
+    "directory": "packages/core"
+  },
+  "author": "yue1123",
   "type": "module",
   "license": "MIT",
   "exports": {
