@@ -66,6 +66,10 @@ export default defineConfig({
 
 完整示例（含暗色模式主题映射）见 [`examples/vitepress`](examples/vitepress)，运行 `pnpm example:vitepress` 启动。
 
+## 演示站
+
+[`examples/playground`](examples/playground) 是一个在线编辑器：左边写 Markdown，右边实时显示渲染结果，可在 markdown-it、marked、remark 之间切换，对比各自的输出。运行 `pnpm example:playground` 启动。
+
 ## 选项
 
 | 选项 | 说明 |
@@ -100,6 +104,7 @@ pnpm coverage      # 覆盖率，阈值 100%
 pnpm typecheck
 pnpm build
 pnpm example:vitepress  # 启动 VitePress 示例
+pnpm example:playground # 启动演示站
 pnpm changeset     # 记录版本变更
 ```
 

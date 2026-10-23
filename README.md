@@ -66,6 +66,10 @@ export default defineConfig({
 
 See [`examples/vitepress`](examples/vitepress) for a complete example, including dark mode theme mapping. Run `pnpm example:vitepress` to start it.
 
+## Playground
+
+[`examples/playground`](examples/playground) is a live editor: Markdown on the left, rendered output on the right, with tabs to switch between markdown-it, marked and remark and compare their output. Run `pnpm example:playground` to start it.
+
 ## Options
 
 | Option | Description |
@@ -100,6 +104,7 @@ pnpm coverage           # coverage, with a 100% threshold
 pnpm typecheck
 pnpm build
 pnpm example:vitepress  # start the VitePress example
+pnpm example:playground # start the playground
 pnpm changeset          # record a version change
 ```
 
