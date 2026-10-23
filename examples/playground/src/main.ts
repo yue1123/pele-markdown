@@ -46,6 +46,30 @@ for (const tab of document.querySelectorAll<HTMLButtonElement>('[data-view]')) {
   })
 }
 
+// 'system' clears the attribute so light-dark() follows the OS preference
+const themeButtons = document.querySelectorAll<HTMLButtonElement>('#theme [data-theme]')
+
+function applyTheme(theme: string) {
+  if (theme === 'system') delete document.documentElement.dataset.theme
+  else document.documentElement.dataset.theme = theme
+  for (const button of themeButtons) {
+    button.setAttribute('aria-checked', String(button.dataset.theme === theme))
+  }
+}
+
+for (const button of themeButtons) {
+  button.addEventListener('click', () => {
+    const theme = button.dataset.theme!
+    applyTheme(theme)
+    try {
+      if (theme === 'system') localStorage.removeItem('theme')
+      else localStorage.setItem('theme', theme)
+    } catch {}
+  })
+}
+
+applyTheme(document.documentElement.dataset.theme ?? 'system')
+
 let pending = 0
 source.addEventListener('input', () => {
   cancelAnimationFrame(pending)

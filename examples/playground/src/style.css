@@ -1,30 +1,25 @@
 :root {
-  --bg: #fafaf9;
-  --panel: #ffffff;
-  --fg: #1c1917;
-  --muted: #78716c;
-  --border: #e7e5e4;
-  --soft: #f5f5f4;
-  --accent: #205ea6;
-  --danger: #af3029;
-  --danger-soft: #fdecea;
+  --bg: light-dark(#fafaf9, #141312);
+  --panel: light-dark(#ffffff, #1c1b1a);
+  --fg: light-dark(#1c1917, #e7e5e4);
+  --muted: light-dark(#78716c, #a8a29e);
+  --border: light-dark(#e7e5e4, #2f2d2b);
+  --soft: light-dark(#f5f5f4, #262422);
+  --accent: light-dark(#205ea6, #6ea8ef);
+  --danger: light-dark(#af3029, #f87171);
+  --danger-soft: light-dark(#fdecea, #3b1d1b);
   --mono: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
   --sans: system-ui, -apple-system, 'Segoe UI', sans-serif;
   color-scheme: light dark;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #141312;
-    --panel: #1c1b1a;
-    --fg: #e7e5e4;
-    --muted: #a8a29e;
-    --border: #2f2d2b;
-    --soft: #262422;
-    --accent: #6ea8ef;
-    --danger: #f87171;
-    --danger-soft: #3b1d1b;
-  }
+/* The theme switcher pins a scheme; without it light-dark() follows the OS */
+:root[data-theme='light'] {
+  color-scheme: light;
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
 }
 
 /* Map pele colors to the page theme so diagrams follow dark mode without re-rendering */
@@ -114,7 +109,8 @@ textarea {
   color: var(--fg);
 }
 
-.tabs button[aria-selected='true'] {
+.tabs button[aria-selected='true'],
+.tabs button[aria-checked='true'] {
   background: var(--panel);
   color: var(--fg);
   box-shadow: 0 1px 2px rgb(0 0 0 / 0.12);
