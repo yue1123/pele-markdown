@@ -9,6 +9,14 @@
   "compilerOptions": {
     "types": [
       "node"
-    ]
+    ],
+    "paths": {
+      "pele-markdown-core": [
+        "./packages/core/src/index.ts"
+      ],
+      "markdown-it-14": [
+        "./packages/markdown-it-pele/node_modules/@types/markdown-it/index.d.mts"
+      ]
+    }
   }
 }

@@ -11,7 +11,7 @@
     "verbatimModuleSyntax": true,
     "noEmit": true,
     "paths": {
-      "pele-core": [
+      "pele-markdown-core": [
         "./packages/core/src/index.ts"
       ]
     }
