@@ -1,0 +1,25 @@
+/* Map pele colors to VitePress theme variables so diagrams follow dark mode */
+.pele {
+  --pele-bg: transparent;
+  --pele-fg: var(--vp-c-text-1);
+  --pele-muted: var(--vp-c-text-2);
+  --pele-line: var(--vp-c-text-2);
+  --pele-surface: var(--vp-c-bg-soft);
+  --pele-surface-alt: var(--vp-c-bg-alt);
+  --pele-border: var(--vp-c-divider);
+  --pele-accent: var(--vp-c-brand-1);
+  --pele-font: var(--vp-font-family-base);
+}
+
+.pele-diagram {
+  margin: 16px 0;
+  overflow-x: auto;
+}
+
+.pele-diagram .pele-error {
+  padding: 12px 16px;
+  border-radius: 8px;
+  background: var(--vp-c-danger-soft);
+  color: var(--vp-c-danger-1);
+  white-space: pre-wrap;
+}
