@@ -138,6 +138,15 @@ textarea {
   background: var(--panel);
 }
 
+.github {
+  display: inline-flex;
+  color: var(--muted);
+}
+
+.github:hover {
+  color: var(--fg);
+}
+
 .panes {
   display: grid;
   grid-template-columns: 1fr 1fr;
