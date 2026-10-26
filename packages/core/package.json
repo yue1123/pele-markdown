@@ -11,7 +11,14 @@
     "ssr",
     "static-site",
     "pele",
-    "markdown"
+    "markdown",
+    "mermaid-js",
+    "diagrams",
+    "markdown-plugin",
+    "inline-svg",
+    "build-time",
+    "server-side-rendering",
+    "no-js"
   ],
   "homepage": "https://github.com/yue1123/pele-markdown/tree/main/packages/core#readme",
   "bugs": "https://github.com/yue1123/pele-markdown/issues",
@@ -20,9 +27,16 @@
     "url": "git+https://github.com/yue1123/pele-markdown.git",
     "directory": "packages/core"
   },
-  "author": "yue1123",
+  "author": {
+    "name": "yue1123",
+    "url": "https://github.com/yue1123"
+  },
   "type": "module",
   "license": "MIT",
+  "engines": {
+    "node": ">=20"
+  },
+  "sideEffects": false,
   "exports": {
     ".": {
       "import": {
@@ -41,6 +55,9 @@
   "files": [
     "dist"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "build": "tsdown",
     "typecheck": "tsc -p ."

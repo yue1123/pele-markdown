@@ -14,7 +14,15 @@
     "remark",
     "remark-plugin",
     "unified",
-    "mdast"
+    "mdast",
+    "mermaid-js",
+    "diagrams",
+    "markdown-plugin",
+    "inline-svg",
+    "build-time",
+    "server-side-rendering",
+    "no-js",
+    "rehype"
   ],
   "homepage": "https://github.com/yue1123/pele-markdown/tree/main/packages/remark-pele#readme",
   "bugs": "https://github.com/yue1123/pele-markdown/issues",
@@ -23,9 +31,16 @@
     "url": "git+https://github.com/yue1123/pele-markdown.git",
     "directory": "packages/remark-pele"
   },
-  "author": "yue1123",
+  "author": {
+    "name": "yue1123",
+    "url": "https://github.com/yue1123"
+  },
   "type": "module",
   "license": "MIT",
+  "engines": {
+    "node": ">=20"
+  },
+  "sideEffects": false,
   "exports": {
     ".": {
       "import": {
@@ -44,6 +59,9 @@
   "files": [
     "dist"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "build": "tsdown",
     "typecheck": "tsc -p ."
