@@ -1,6 +1,6 @@
 {
   "name": "marked-pele",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "marked extension that renders Mermaid diagrams to SVG at build time, no client-side JS",
   "keywords": [
     "mermaid",
